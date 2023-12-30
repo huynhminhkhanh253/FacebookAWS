@@ -1,0 +1,32 @@
+.statusbar__container{
+    display: flex;
+    margin-left: 70px;
+    width: 595px;
+    overflow-x: scroll;
+    
+    
+}
+.statusbar__container::-webkit-scrollbar {
+    display: none;
+}
+.statusbar__status{
+    height: 250px;
+    width: 139px;
+    margin: 20px 5px;
+    border-radius: 15px !important;  
+}
+.middle__container{
+    
+}
+.upload__icon{
+    margin-top: 95px;
+    margin-left: 44px;
+}
+.statusbar__status > input{
+    display: none;
+}
+.status__image{
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    border-radius: inherit;
+}
