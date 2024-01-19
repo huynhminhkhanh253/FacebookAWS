@@ -1,0 +1,17 @@
+com\example\facebookapi\FacebookApiApplication.class
+com\example\facebookapi\Controller\PostController.class
+com\example\facebookapi\Controller\UserController.class
+com\example\facebookapi\Entity\Post.class
+com\example\facebookapi\Service\CommentService.class
+com\example\facebookapi\Service\PostService.class
+com\example\facebookapi\Entity\Status.class
+com\example\facebookapi\Repository\PostRepository.class
+com\example\facebookapi\Controller\CommentController.class
+com\example\facebookapi\Service\StatusService.class
+com\example\facebookapi\Entity\User.class
+com\example\facebookapi\Repository\UserRepository.class
+com\example\facebookapi\Service\UserService.class
+com\example\facebookapi\Repository\CommentRepository.class
+com\example\facebookapi\Controller\StatusController.class
+com\example\facebookapi\Repository\StatusRepository.class
+com\example\facebookapi\Entity\Comment.class

@@ -68,7 +68,7 @@ class UploadSection extends Component {
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(payload),
                 }
-                fetch("http://ec2-54-151-243-101.ap-southeast-1.compute.amazonaws.com:8080/api/postService/save", requestOptions)
+                fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/postService/save", requestOptions)
                 .then(respone => respone.json())
                 .then(data => {
                     console.log(data);

@@ -16,7 +16,7 @@
 .upload__bottom{
     display: flex;
     margin-left: 60px;
-    padding-top: 5px;
+    padding-top: -500px;
 }
 .upload__tabs{
     width: 150px;

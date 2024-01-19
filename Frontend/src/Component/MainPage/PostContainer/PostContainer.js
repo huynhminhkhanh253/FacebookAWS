@@ -15,15 +15,24 @@ class PostContainer extends Component {
     }
 
     getData=()=>{
-        const thisContext = this;
-        fetch("http://ec2-54-151-243-101.ap-southeast-1.compute.amazonaws.com:8080/api/postService/getPost")
+        fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/postService/getPost")
             .then(respone => respone.json())
             .then(json => {
-                thisContext.setState({data : json});
+                this.setState({data : json});
             })
             .catch(error=>{
                 
             })
+        // let json = [
+        //     {
+                
+        //     },
+        //     {
+
+        //     }
+        // ]
+
+        // this.setState({data : json});
     }
     componentDidMount() {
         this.getData();

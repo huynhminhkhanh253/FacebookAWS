@@ -1,24 +1,42 @@
 import React, { Component } from 'react'
 import './PostContainer.css';
-import { Avatar, Paper } from '@mui/material';
+import { Avatar, Button, Paper } from '@mui/material';
 import post from "../../../ImageSet/post_2.png";
 import like from "../../../ImageSet/like.png";
 import likebutton from "../../../ImageSet/likebutton.png";
 import commentbutton from "../../../ImageSet/comment.png";
 import sharebutton from "../../../ImageSet/share.png";
 import { getImage } from '../../../getImage';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import Menu from '@mui/material/Menu';
+import DropdownItem from './DropdownItem';
+import MenuList from '@mui/material/MenuList';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Typography from '@mui/material/Typography';
+import DraftsIcon from '@mui/icons-material/Drafts';
+import SendIcon from '@mui/icons-material/Send';
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 class Post extends Component {
     constructor(props) {
         super(props);
     }
     state = { 
+        open : false,
         comments: [],
-        comment: null
+        comment: null,
     }
+
+    handleClose = () => {
+        this.setState({open : false});
+
+    };
     getData=()=>{
         const thisContext = this;
-        fetch("http://ec2-54-151-243-101.ap-southeast-1.compute.amazonaws.com:8080/api/commentService/getAllComments/"+this.props.object.postID)
+        fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/commentService/getAllComments/"+this.props.object.postID)
         .then(response => response.json())
         .then(json => {
             thisContext.setState({comments : json});
@@ -37,30 +55,40 @@ class Post extends Component {
 
     submitComment=(event)=>{
         if(event.key == "Enter"){
-        const thisContext = this;
-        let payload = {
-            "postID" : this.props.object.postID,
-            "userID" : JSON.parse(localStorage.getItem("user")).userID,
-            "userImage" : JSON.parse(localStorage.getItem("user")).userImage,
-            "userName" : JSON.parse(localStorage.getItem("user")).userName,
-            "comment" : this.state.comment
+            const thisContext = this;
+            let payload = {
+                "postID" : this.props.object.postID,
+                "userID" : JSON.parse(localStorage.getItem("user")).userID,
+                "userImage" : JSON.parse(localStorage.getItem("user")).userImage,
+                "userName" : JSON.parse(localStorage.getItem("user")).userName,
+                "comment" : this.state.comment
+            }
+            const requestOptions = {
+                method: "POST",
+                headers: {'Content-Type' : 'application/json'},
+                body : JSON.stringify(payload),
+            };
+
+            fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/commentService/save",requestOptions)
+            .then(response => response.json())
+            .then(data =>{
+                thisContext.getData();
+
+            })
+            .catch(error =>{
+
+            })
         }
-        const requestOptions = {
-            method: "POST",
-            headers: {'Content-Type' : 'application/json'},
-            body : JSON.stringify(payload),
-        };
-
-        fetch("http://ec2-54-151-243-101.ap-southeast-1.compute.amazonaws.com:8080/api/commentService/save",requestOptions)
-        .then(response => response.json())
-        .then(data =>{
-            thisContext.getData();
-
-        })
-        .catch(error =>{
-
-        })
     }
+
+    openOption=()=>{
+        if(this.state.open == false){
+            this.setState({open : true});
+        }
+        else{
+            this.setState({open : false});
+        }
+        
     }
 
     render() { 
@@ -74,6 +102,33 @@ class Post extends Component {
                         </div>
                         <div className='post_header_text' >
                             {this.props.object.userName}
+                        </div>
+                    </div>
+                    {/* Ultility */}
+                    <div className = 'utility' >
+                        <div>
+                        <Button color="inherit" variant="text" onClick={this.openOption}>
+                            <MoreHorizIcon/>
+                        </Button>
+                        </div>
+                        {/* <div className='dropdown-menu' >
+                            <DropdownItem img = {likebutton} text = {"My Profile"}/>
+                        </div> */}
+                        <div className='dropdown'>
+                            {
+                                this.state.open == true ? 
+                                <Paper square={false} elevation={20} sx={{ width: 230 }}>
+                                    <MenuList>
+                                        <MenuItem onClick={this.handleClose}>
+                                        <ListItemIcon>
+                                            <DeleteIcon fontSize="small" />
+                                        </ListItemIcon>
+                                        <Typography variant="inherit">Delete post</Typography>
+                                        </MenuItem>
+                                    </MenuList>
+                                </Paper>
+                                : <span></span>
+                            }
                         </div>
                     </div>
                     {/* description */}
@@ -145,6 +200,7 @@ class Post extends Component {
                             </div>
                         </div>
                     </div>
+                    
                     
 
                 </Paper>

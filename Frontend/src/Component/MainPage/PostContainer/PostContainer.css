@@ -30,6 +30,16 @@
     width: 100%;
     margin-top: 15px;
 }
+.utility{
+    color: #787A7E;
+    margin-left: 530px;
+    margin-top: -55px;
+}
+.menu{
+    width: 500px;
+    margin-left: 500px;
+    margin-top: -400px;
+}
 .post_likecount_container{
     display: flex;
     margin-top: 10px;
@@ -90,3 +100,12 @@
     width: 100%;
     text-align: right;
 }
+.dropdown{
+    margin-left: -170px;
+    transform: translateY(-10px);
+    transition: opacity 150ms ease-in-out, transform 1000ms ease-in-out;
+}
+
+
+
+

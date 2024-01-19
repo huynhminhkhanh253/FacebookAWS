@@ -49,7 +49,7 @@ class LoginHome extends Component {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(payload),
             }
-            fetch("http://ec2-54-151-243-101.ap-southeast-1.compute.amazonaws.com:8080/api/userService/save", requestOptions)
+            fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/userService/save", requestOptions)
             .then(respone => respone.json())
             .then(data => {
                 localStorage.setItem("user",JSON.stringify(data));
@@ -71,7 +71,7 @@ class LoginHome extends Component {
         .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        fetch("http://ec2-54-151-243-101.ap-southeast-1.compute.amazonaws.com:8080/api/userService/getUserDetails/"+ user.uid)
+        fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/userService/getUserDetails/"+ user.uid)
             .then(respone => respone.json())
             .then(data => {
                 localStorage.setItem("user",JSON.stringify(data));

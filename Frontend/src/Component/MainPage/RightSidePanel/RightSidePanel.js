@@ -35,7 +35,7 @@ class RightSidePanel extends Component {
         //this.setState({data : jsondata});
         
         const thisContext = this;
-        fetch("http://ec2-54-151-243-101.ap-southeast-1.compute.amazonaws.com:8080/api/userService/getAllUsers")
+        fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/userService/getAllUsers")
         .then(respone => respone.json())
         .then(json => {
             thisContext.setState({data: json})
