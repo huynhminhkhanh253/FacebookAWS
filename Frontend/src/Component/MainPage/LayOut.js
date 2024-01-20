@@ -18,9 +18,6 @@ class LayOut extends Component {
     letUpdate =() =>{
         this.refs.child.getData(); 
     }
-    letUpdate2 = () =>{
-        this.refs.update2();
-    }
     render() { 
         return (  
             <div className='mainpage__container'>
@@ -29,7 +26,7 @@ class LayOut extends Component {
                         <LeftSide/>
                     </Grid>
                     <Grid item xs = {6} className='middle__container'>
-                        <StatusBar update={this.letUpdate2}/>
+                        <StatusBar/>
                         <UploadSection update = {this.letUpdate} />
                         <PostContainer ref="child"/>
                     </Grid>

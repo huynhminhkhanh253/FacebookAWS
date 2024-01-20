@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect, Component } from 'react'
 import './PostContainer.css';
 import Post from './Post';
 
@@ -13,7 +13,6 @@ class PostContainer extends Component {
     state = { 
         data: []
     }
-
     getData=()=>{
         fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/postService/getPost")
             .then(respone => respone.json())
@@ -44,7 +43,7 @@ class PostContainer extends Component {
             <div>
                     {
                         this.state.data.map((item)=>(
-                            <Post object = {item} />
+                            <Post uploadPost={this.getData} object = {item} />
                         ))
                     }
 

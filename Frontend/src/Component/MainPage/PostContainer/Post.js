@@ -90,6 +90,20 @@ class Post extends Component {
         }
         
     }
+    handleDelete=()=>{
+        const thisContext = this;
+        const requestOptions = {
+            method: "DELETE",
+        }
+        fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/postService/delete/" + this.props.object.postID , requestOptions)
+        .then(respone => respone.json())
+        .then(data => {  
+            thisContext.props.uploadPost();
+        })
+        .catch(error =>{
+
+        })
+    }
 
     render() { 
         return ( 
@@ -123,7 +137,7 @@ class Post extends Component {
                                         <ListItemIcon>
                                             <DeleteIcon fontSize="small" />
                                         </ListItemIcon>
-                                        <Typography variant="inherit">Delete post</Typography>
+                                        <Typography onClick={this.handleDelete} variant="inherit">Delete post</Typography>
                                         </MenuItem>
                                     </MenuList>
                                 </Paper>
