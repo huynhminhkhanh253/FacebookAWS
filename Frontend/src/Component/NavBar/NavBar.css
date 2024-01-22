@@ -18,6 +18,7 @@
     background-color: #EFF2F5;
     font-size: 16px;
     margin-top: 8px;
+    input:focus {outline:none;}
     
 }
 .navbar__search_icon{
@@ -59,4 +60,11 @@
     width: 45px;
     height: 42px;
     margin: 8px 3px 0px 3px; 
+}
+.sign_out{
+    margin-left: -110px;
+    
+}
+.dropdown_menu{
+    
 }

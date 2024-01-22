@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+
 import "./NavBar.css";
-import { Avatar, Grid } from '@mui/material';
+import { Avatar, Grid, ListItemIcon, Menu, MenuItem, MenuList, Paper, Typography, Button } from '@mui/material';
 import fblogo from "../../ImageSet/logo.png";
 import searchicon from "../../ImageSet/searchicon.png";
 import home from "../../ImageSet/home.svg";
@@ -10,6 +11,8 @@ import market from "../../ImageSet/market.svg";
 import group from "../../ImageSet/groups.svg";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import app from "../../firebase";
+import CustomizedMenus from './CustomizedMenus';
+
 
 class NavBar extends Component {
     constructor(props) {
@@ -17,63 +20,20 @@ class NavBar extends Component {
     }
     state = { 
         user_image : null,
-        image: null
-     }
-    updateImage=(event)=>{
-        let image = event.target.files[0];
-        if(image==undefined || image =='null'){
-            return;
-        }
-        const thisContext = this;
-        const storage = getStorage(app);
-        const storageRef = ref(storage, 'userImage/' + image.name);
-
-        const uploadTask = uploadBytesResumable(storageRef, image);
-        uploadTask.on('state_changed', 
-        (snapshot) => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log('Upload is ' + progress + '% done');
-            switch (snapshot.state) {
-            case 'paused':
-                console.log('Upload is paused');
-                break;
-            case 'running':
-                console.log('Upload is running');
-                break;
-            }
-            
-        }, 
-        (error) => {
-            // Handle unsuccessful uploads
-        }, 
-        () => { 
-                // Handle successful uploads on complete
-                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                console.log('File available at', downloadURL);
-                let payload = {
-                    "userID" : JSON.parse(localStorage.getItem("user")).userID,
-                    "userImage" : downloadURL,
-                    "userName" : JSON.parse(localStorage.getItem("user")).userName
-                }
-                const requestOptions = {
-                    method: "POST",
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(payload),
-                }
-                fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/userService/save", requestOptions)
-                .then(respone => respone.json())
-                .then(data => {  
-                    localStorage.setItem("user", JSON.stringify(data))
-                    window.location.reload();
-                })
-                .catch(error =>{
-
-                })
-            });
-        }
-        );
+        image: null,
+        anchorEl: null,
+        open : true
+        
     }
+
+    handleClick = (event) => {
+        this.setState({ anchorEl : event.currentTarget});
+        this.setState({open : this.anchorEl});
+    };
+    handleClose = () => {
+        this.setState({anchorEl : null});
+        console.log(this.anchorEl);
+    };
     render() { 
         return (  
             <div>
@@ -85,6 +45,7 @@ class NavBar extends Component {
                                 <img className='navbar__search_icon' src={searchicon}/>
                                 <input className='navbar__search_input' type='text' placeholder='Search Facebook'/>
                             </div>
+                            
                         </div>
                     </Grid>
                     <Grid item xs = {6}>
@@ -108,22 +69,27 @@ class NavBar extends Component {
                     </Grid>
                     <Grid item xs = {3}>
                         <div className='navbar__righttab'>
+                            
                             <img className='navbar__img' src='https://ik.imagekit.io/gyxs5vcin/ImageSet/6dotmenu.png?updatedAt=1693133041820'/>
                             <img className='navbar__img' src='https://ik.imagekit.io/gyxs5vcin/ImageSet/mesmenu.png?updatedAt=1693133041800'/>
                             
                             <img className='navbar__img' src='https://ik.imagekit.io/gyxs5vcin/ImageSet/noti.png?updatedAt=1693133041800'/>
-                            <label for="userImage-upload" >
-                                <Avatar className='navbar__rightimg' src={JSON.parse(localStorage.getItem("user")).userImage}/>
-                                                                          
-                            </label>
-                            <input style={{display:'none'}} onChange={this.updateImage} type="file" id="userImage-upload"/>
-
+                            
+                            <div className='dropdown_menu' >
+                                <CustomizedMenus>
+                                
+                                </CustomizedMenus>
+                                
+                            </div>
+                            {/* <input style={{display:'none'}} onChange={this.updateImage} type="file" id="userImage-upload"/> */}
                         </div>
+                        
                     </Grid>
                 </Grid>
             </div>
         );
     }
 }
+
  
 export default NavBar;

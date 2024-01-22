@@ -109,7 +109,7 @@ class UploadSection extends Component {
                             <div className='upload__text'>Live Video</div>
                         </div>
                         <div className='upload__tabs'>
-                            <label for="file-upload" className='upload__tabs'>
+                            <label style={{cursor:"pointer"}} for="file-upload" className='upload__tabs'>
                                 <img src={image} width='35px'/>
                                 <div className='upload__text'>Photo/Video</div>
                             </label>

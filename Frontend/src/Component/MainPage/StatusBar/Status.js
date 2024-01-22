@@ -70,7 +70,7 @@ class Status extends Component {
                 {
                     this.props.uploader == "true" ?
                     <Paper className='statusbar__status'>
-                        <label for="file-upload-status" className='upload__tabs'>
+                        <label style={{cursor:"pointer"}} for="file-upload-status" className='upload__tabs'>
                             <img src={uploadIcon} className="upload__icon"/>    
                         </label>
                         <input onChange={this.openStatusDialog} type="file" id="file-upload-status"/>
