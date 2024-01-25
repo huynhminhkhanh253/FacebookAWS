@@ -19,6 +19,7 @@
     text-align: left;
     margin-left: 230px;
     margin-top: -15px;
+    cursor: pointer;
 }
 .logincard__container {
     width: 400px;
@@ -46,6 +47,7 @@
     font-weight: 600;
     color: white;
     background-color: #1877f2;
+    cursor: pointer;
 }
 .login__createnew {
     width: 220px;
@@ -57,11 +59,13 @@
     font-weight: 600;
     color: white;
     background-color: #43B829;
+    cursor: pointer;
 }
 .forget_Text {
     margin-top: 15px;   
     color: #1877f2;
     font-weight: 500;
+    cursor: pointer;
 }
 .dividor {
     width: 360px;

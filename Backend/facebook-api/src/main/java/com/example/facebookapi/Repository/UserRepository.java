@@ -11,4 +11,5 @@ public interface UserRepository extends CassandraRepository<User, String> {
     User save(User user);
     ArrayList<User> findAll();
     User findAllByuserID(String userID);
+    void deleteById(String userID);
 }

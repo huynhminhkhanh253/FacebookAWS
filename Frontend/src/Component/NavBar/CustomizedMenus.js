@@ -9,9 +9,9 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { getAuth, deleteUser } from "firebase/auth";
 
 
-  
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -53,62 +53,6 @@ const StyledMenu = styled((props) => (
     },
   },
 }));
-
-// const updateImage=(event)=>{
-//   let image = event.target.files[0];
-//   if(image==undefined || image =='null'){
-//       return;
-//   }
-//   const thisContext = this;
-//   const storage = getStorage(app);
-//   const storageRef = ref(storage, 'userImage/' + image.name);
-
-//   const uploadTask = uploadBytesResumable(storageRef, image);
-//   uploadTask.on('state_changed', 
-//   (snapshot) => {
-//       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-//       console.log('Upload is ' + progress + '% done');
-//       switch (snapshot.state) {
-//       case 'paused':
-//           console.log('Upload is paused');
-//           break;
-//       case 'running':
-//           console.log('Upload is running');
-//           break;
-//       }
-      
-//   }, 
-//   (error) => {
-//       // Handle unsuccessful uploads
-//   }, 
-//   () => { 
-//           // Handle successful uploads on complete
-//           // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-//           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-//           console.log('File available at', downloadURL);
-//           let payload = {
-//               "userID" : JSON.parse(localStorage.getItem("user")).userID,
-//               "userImage" : downloadURL,
-//               "userName" : JSON.parse(localStorage.getItem("user")).userName
-//           }
-//           const requestOptions = {
-//               method: "POST",
-//               headers: {'Content-Type': 'application/json'},
-//               body: JSON.stringify(payload),
-//           }
-//           fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/userService/save", requestOptions)
-//           .then(respone => respone.json())
-//           .then(data => {  
-//               localStorage.setItem("user", JSON.stringify(data))
-//               window.location.reload();
-//           })
-//           .catch(error =>{
-
-//           })
-//       });
-//   }
-//   );
-// }
 
 export default function CustomizedMenus() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -182,6 +126,29 @@ export default function CustomizedMenus() {
     }
     );
   }
+
+  const handleSignoutandDelete=()=>{
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const thisContext = this;
+    const requestOptions = {
+        method: "DELETE"
+    }
+    fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/userService/delete/" + JSON.parse(localStorage.getItem("user")).userID , requestOptions)
+    .then(respone => respone.json())
+    .then(data => {  
+        deleteUser(user).then(() => {
+            alert("user delete")
+            localStorage.removeItem("user");
+            window.location.reload();
+        }).catch((error) => {
+            
+        });
+    })
+    .catch(error =>{
+
+    })
+}
   
   return (
     <div>
@@ -208,7 +175,7 @@ export default function CustomizedMenus() {
           <LogoutIcon />
           Sign out
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={handleSignoutandDelete} disableRipple>
           <PersonRemoveIcon/>
           Sign out and remove user
         </MenuItem>

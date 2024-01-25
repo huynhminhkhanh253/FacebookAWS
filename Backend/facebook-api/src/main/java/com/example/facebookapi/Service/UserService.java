@@ -34,4 +34,9 @@ public class UserService {
     public User getUserData(String userID){
         return userRepository.findAllByuserID(userID);
     }
+
+    public ArrayList<User> deleteUserdata(String userID){
+        userRepository.deleteById(userID);
+        return userRepository.findAll();
+    }
 }

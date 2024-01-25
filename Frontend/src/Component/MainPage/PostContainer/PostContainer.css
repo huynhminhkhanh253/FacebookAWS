@@ -3,6 +3,7 @@
     border-radius: 11px !important;
     margin-left: 70px;
     margin-top: 20px;
+    position: relative;
 }
 ::-webkit-scrollbar {
     display: none;
@@ -25,10 +26,12 @@
 .post_description{
     display: flex;
     margin-left: 15px;
+    margin-top: 15px;
 }
 .post_image{
     width: 100%;
     margin-top: 15px;
+    
 }
 .utility{
     color: #787A7E;
@@ -104,6 +107,8 @@
     margin-left: -170px;
     transform: translateY(-10px);
     transition: opacity 150ms ease-in-out, transform 1000ms ease-in-out;
+    position: absolute;
+    
 }
 
 

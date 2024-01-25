@@ -91,7 +91,7 @@ class UploadSection extends Component {
                     <div className='upload__header'>Create Post</div>
                     <input onChange={(event)=>this.state.description=event.currentTarget.value} type='text' className="upload__textbox" placeholder="what's on your mind"/>
                     <img src={this.state.uploadImage} className='upload__preview'/>
-                    <input className='upload__button2' type='button' value='Post' onClick={this.uploadToFireBase} />
+                    <input style={{cursor:"pointer"}} className='upload__button2' type='button' value='Post' onClick={this.uploadToFireBase} />
                 </Dialog>
                 <Paper className='upload__container'>
                     <div className='upload_top'>

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import "./LoginHome.css";
-import { Grid } from '@mui/material';
+import { Alert, Grid } from '@mui/material';
 import { Avatar, Paper } from '@mui/material';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, reload } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, reload} from "firebase/auth";
 import app from "../../firebase";
+import facebooksignup from "../../ImageSet/facebooksignup.svg";
 import Post from '../MainPage/PostContainer/Post';
 
 
@@ -54,6 +55,7 @@ class LoginHome extends Component {
             .then(data => {
                 localStorage.setItem("user",JSON.stringify(data));
                 window.location.reload();
+                
             })
             .catch(error=>{
                 
@@ -62,6 +64,7 @@ class LoginHome extends Component {
         .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        alert(errorCode);
         // ..
         })
     }
@@ -78,12 +81,12 @@ class LoginHome extends Component {
                 window.location.reload();
             })
             .catch(error=>{
-                
             })
     })
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        alert(errorCode);
     });
     }
     render() { 
@@ -92,9 +95,9 @@ class LoginHome extends Component {
             <Grid className="main__content" container >
                     <Grid item xs={7}>
                         <div className="fblogo">
-                            <img src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg" width="300px" />
+                            <img src={facebooksignup} width="300px" />
                         </div>
-                        <div>
+                        <div> 
                             <h1 className="text">Facebook helps you connect and share with the people in your life.</h1>
                         </div>
                     </Grid>
@@ -126,13 +129,13 @@ class LoginHome extends Component {
                             :
                             <div container="login__panel">
                                 <div>
-                                    <input  onChange={(event)=>{this.state.signup_name=event.currentTarget.value}} type="text" className="login__input" placeholder="Name" />
+                                    <input onChange={(event)=>{this.state.signup_name=event.currentTarget.value}} type="text" className="login__input" placeholder="Name" />
                                 </div>
                                 <div>
-                                    <input  onChange={(event)=>{this.state.signup_email=event.currentTarget.value}} type="text" className="login__input" placeholder="Email address" />
+                                    <input onChange={(event)=>{this.state.signup_email=event.currentTarget.value}} type="text" className="login__input" placeholder="Email address" />
                                 </div>
                                 <div>
-                                    <input  onChange={(event)=>{this.state.signup_password=event.currentTarget.value}} type="password" className="login__input" placeholder="Password"/>
+                                    <input onChange={(event)=>{this.state.signup_password=event.currentTarget.value}} type="password" className="login__input" placeholder="Password"/>
                                 </div>
                                 <div>
                                     <button onClick={this.signUP} className="login__button">Sign Up</button>
