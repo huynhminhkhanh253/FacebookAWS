@@ -8,12 +8,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-
                 echo 'hello'
-                dir('Frontend'){
-                    sh 'npm install'
-                }
+                // dir('Frontend'){
+                //     sh 'npm install'
+                // }
             }
+            
         }
     }
 }
