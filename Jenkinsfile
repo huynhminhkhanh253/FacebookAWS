@@ -8,12 +8,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                // dir("Frontend") {
+                    
+                //     sh 'npm install'
+                // }
                 pwd
-                dir("Frontend") {
-                    pwd
-                    sh 'npm install'
-                }
-
             }
         }
     }
