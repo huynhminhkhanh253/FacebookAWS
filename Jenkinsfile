@@ -13,7 +13,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh '.Frontend/npm install'
+                sh 'cd Frontend'
+                sh 'npm build'
             }
         }
     }
