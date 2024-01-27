@@ -10,7 +10,9 @@ pipeline {
             }
             steps {
                 echo 'building reactjs'
+                sh 'pwd'
                 sh 'cd Frontend'
+                sh 'pwd'
                 sh 'set -x'
                 sh 'npm build'
             }
