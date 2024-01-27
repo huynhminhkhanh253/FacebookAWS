@@ -10,10 +10,7 @@ pipeline {
             }
             steps {
                 echo 'building reactjs'
-                sh 'pwd'
                 sh 'cd Frontend'
-                sh 'pwd'
-                sh 'set -x'
                 sh 'npm build'
             }
         }
@@ -23,12 +20,9 @@ pipeline {
                 maven 'maven_3_9_1'
             }
             steps {
-                
                 echo 'building springboot'
-                sh 'pwd'
+                sh 'cd..'
                 sh 'cd Backend/facebook-api'
-                sh 'pwd'
-                sh 'set -x'
                 sh 'mvn clean install'
             }
         }
