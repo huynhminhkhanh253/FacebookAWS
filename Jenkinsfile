@@ -6,15 +6,15 @@ pipeline {
         }
     }
     stages {
-        stage('Message') {
-            steps {
-                echo 'hello'
-            }
-        }
         stage('Build') {
             steps {
                 sh 'cd Frontend'
                 sh 'npm build'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './jenkins/scripts/test.sh'
             }
         }
     }
