@@ -4,9 +4,6 @@ pipeline {
             image 'node:6-alpine'
             args '-p 3000:3000'
         }
-        tool {
-            maven 'maven_3_9_1'
-        }
     }
     stages {
         stage('Frontend build') {
@@ -19,6 +16,11 @@ pipeline {
         }
         stage('Backend build') {
             steps {
+                agent{
+                    tool {
+                        maven 'maven_3_9_1'
+                    }
+                }
                 echo 'building springboot'
                 sh 'cd Backend'
                 sh 'set -x'
