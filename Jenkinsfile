@@ -11,15 +11,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                cd
                 echo 'hello'
             }
         }
         stage('Test') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Deliver') {
             steps {
                 sh 'npm install'
             }
