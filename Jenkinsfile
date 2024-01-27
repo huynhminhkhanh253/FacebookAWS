@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Frontend build') {
-            agent any {
+            agent docker{
                 docker {
                     image 'node:6-alpine'
                     args '-p 3000:3000'
@@ -16,10 +16,11 @@ pipeline {
             }
         }
         stage('Backend build') {
-            tool {
-                maven 'maven_3_9_1'
-            }
             steps {
+                agent any
+                tool {
+                    maven 'maven_3_9_1'
+                }
                 echo 'building springboot'
                 sh 'cd Backend'
                 sh 'set -x'
