@@ -25,7 +25,6 @@ class NavBar extends Component {
         open : true
         
     }
-
     handleClick = (event) => {
         this.setState({ anchorEl : event.currentTarget});
         this.setState({open : this.anchorEl});

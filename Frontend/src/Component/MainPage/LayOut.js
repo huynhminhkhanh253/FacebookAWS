@@ -31,7 +31,7 @@ class LayOut extends Component {
                         <PostContainer ref="child"/>
                     </Grid>
                     <Grid item xs = {3}>
-                        <RightSidePanel/>
+                        <RightSidePanel update = {this.letUpdate}/>
                     </Grid>
                 </Grid>
             </div>

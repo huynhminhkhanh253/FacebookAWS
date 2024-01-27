@@ -68,3 +68,15 @@
 .dropdown_menu{
     
 }
+.editusername{
+
+}
+.editusertext{
+    width: 340px;
+    height: 45px;
+    border-radius: 10px;
+    border: 1px solid #DADDE1;
+    margin: 15px;
+    font-size: 18px;
+    padding: 0px 15px;
+}

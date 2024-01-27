@@ -110,6 +110,10 @@
     position: absolute;
     
 }
+.post__commentcount {
+    width: 100%;
+    text-align: right;
+}
 
 
 

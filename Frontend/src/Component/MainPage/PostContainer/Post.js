@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useRef } from 'react'
 import './PostContainer.css';
 import { Avatar, Button, Paper } from '@mui/material';
 import post from "../../../ImageSet/post_2.png";
@@ -36,10 +36,10 @@ class Post extends Component {
     };
     getData=()=>{
         const thisContext = this;
-        fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/commentService/getAllComments/"+this.props.object.postID)
+        fetch("http://localhost:8080/api/commentService/getAllComments/"+this.props.object.postID)
         .then(response => response.json())
         .then(json => {
-            thisContext.setState({comments : json});
+                        thisContext.setState({comments : json});
         })
         .catch(error =>{
 
@@ -53,8 +53,9 @@ class Post extends Component {
         return data == "" ? false : true;
     }
 
-    submitComment=(event)=>{
+    submitComment=(event)=>{     
         if(event.key == "Enter"){
+            event.currentTarget.value = "";
             const thisContext = this;
             let payload = {
                 "postID" : this.props.object.postID,
@@ -68,13 +69,13 @@ class Post extends Component {
                 headers: {'Content-Type' : 'application/json'},
                 body : JSON.stringify(payload),
             };
-
-            fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/commentService/save",requestOptions)
+            
+            fetch("http://localhost:8080/api/commentService/save",requestOptions)
             .then(response => response.json())
             .then(data =>{
                 thisContext.getData();
+                thisContext.setState({comment:"", comments:[]})
                 
-
             })
             .catch(error =>{
 
@@ -97,11 +98,11 @@ class Post extends Component {
         const requestOptions = {
             method: "DELETE",
         }
-        fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/postService/delete/" + this.props.object.postID , requestOptions)
+        fetch("http://localhost:8080/api/postService/delete/" + this.props.object.postID , requestOptions)
         .then(respone => respone.json())
         .then(data => {  
-            thisContext.props.uploadPost();
-        })
+                        thisContext.props.uploadPost();
+                    })
         .catch(error =>{
 
         })
@@ -165,6 +166,9 @@ class Post extends Component {
                         <div className='post_likecount_count'>
                             {this.props.object.likes}
                         </div>
+                        <div className="post__commentcount">
+                            {this.state.comments.length} comments
+                        </div>
                     </div>
                     {/* Likeshare post */}
                     <div className='post_likeshare'>
@@ -197,12 +201,12 @@ class Post extends Component {
                     <div className="upload__comment">
                         <div className="comment__section">
                             {
-                                this.state.comments.map((item,index)=>(
-                                    index > this.state.comments.length-4 ?
+                                this.state.comments.map((item)=>(
+                                    
                                         <div className="comment">
                                             <Avatar src={item.userImage} className="comment_img" />
                                             <div  className="comment_text" >{item.comment}</div>
-                                        </div> : <span></span>
+                                        </div> 
                                 ))
                             }
                             
