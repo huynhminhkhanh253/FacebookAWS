@@ -18,7 +18,7 @@ pipeline {
         stage('Backend build') {
             agent any
             tools{
-                Maven 'maven_3_9_1'
+                maven '3_9_1'
             }
             steps {
                 
