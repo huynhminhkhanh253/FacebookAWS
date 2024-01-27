@@ -13,8 +13,6 @@ pipeline {
                 //     sh 'npm install'
                 // }
                 echo hello
-                cd Frontend
-                sh 'npm install'
             }
         }
     }
