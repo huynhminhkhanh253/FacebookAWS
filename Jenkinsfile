@@ -12,7 +12,7 @@ pipeline {
                     
                 //     sh 'npm install'
                 // }
-                echo hello
+                echo 'hello'
             }
         }
     }
