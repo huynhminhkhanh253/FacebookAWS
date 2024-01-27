@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Frontend build') {
-            agent {
+            agent any {
                 label 'frontend_agent'
                 docker {
                     image 'node:6-alpine'
