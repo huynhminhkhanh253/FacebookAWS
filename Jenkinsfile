@@ -12,10 +12,5 @@ pipeline {
                 echo 'hello'
             }
         }
-        stage('Test') {
-            steps {
-                sh 'npm install'
-            }
-        }
     }
 }
