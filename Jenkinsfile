@@ -23,7 +23,9 @@ pipeline {
             steps {
                 
                 echo 'building springboot'
+                sh 'pwd'
                 sh 'cd Backend'
+                sh 'pwd'
                 sh 'set -x'
                 sh 'mvn clean install'
             }
