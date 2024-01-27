@@ -6,12 +6,15 @@ pipeline {
         }
     }
     stages {
-        stage('Build') {
+        stage('Message') {
             steps {
-                sh 'npm install'
+                sh '.Frontend/npm install'
             }
         }
-        
-        
+        stage('Build') {
+            steps {
+                sh '.Frontend/npm install'
+            }
+        }
     }
 }
