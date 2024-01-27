@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
+cd Frontend
 set -x
 # npm install --save-dev cross-env
-set +x
-
-set -x
 npm test
