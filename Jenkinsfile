@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Message') {
             steps {
-                sh '.Frontend/npm install'
+                echo 'hello'
             }
         }
         stage('Build') {
