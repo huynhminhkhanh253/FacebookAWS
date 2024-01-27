@@ -25,7 +25,9 @@ pipeline {
             steps {
                 
                 echo 'building springboot'
+                sh 'pwd'
                 sh 'cd Backend/facebook-api'
+                sh 'pwd'
                 sh 'set -x'
                 sh 'mvn clean install'
             }
