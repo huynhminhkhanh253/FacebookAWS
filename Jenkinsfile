@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Frontend build') {
-            agent any {
+            agent {
                 label 'frontend_agent'
                 docker {
                     image 'node:6-alpine'
@@ -17,11 +17,9 @@ pipeline {
             }
         }
         stage('Backend build') {
-            agent {
-                label 'backend_agent'
-                tool {
-                    maven 'maven_3_9_1'
-                }
+            agent any
+            tool {
+                maven 'maven_3_9_1'
             }
             steps {
                 echo 'building springboot'
