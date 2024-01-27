@@ -12,7 +12,9 @@ pipeline {
                     
                 //     sh 'npm install'
                 // }
-                pwd
+                echo hello
+                cd Frontend
+                sh 'npm install'
             }
         }
     }
