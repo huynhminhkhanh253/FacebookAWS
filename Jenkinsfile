@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Frontend build') {
-            agent docker{
+            agent any{
                 docker {
                     image 'node:6-alpine'
                     args '-p 3000:3000'
@@ -17,7 +17,6 @@ pipeline {
         }
         stage('Backend build') {
             steps {
-                agent any
                 tool {
                     maven 'maven_3_9_1'
                 }
