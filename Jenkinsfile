@@ -8,7 +8,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                cd Frontend
                 echo 'hello'
             }
         }
