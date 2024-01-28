@@ -8,8 +8,8 @@ pipeline {
             steps {
                 echo 'building reactjs'
                 dir("Frontend") {
-                    sh 'set -x'
-                    sh 'npm build'
+                    bat 'set -x'
+                    bat 'npm build'
                 }
             }
         }
@@ -18,11 +18,10 @@ pipeline {
                 maven 'maven_3_9_1'
             }
             steps {
-                sh 'set +x'
                 echo 'building springboot'
                 dir("Backend/facebook-api") {
-                    sh 'set -x'
-                    sh 'mvn clean install'
+                    bat 'set -x'
+                    bat 'mvn clean install'
                 }
             }
         }
