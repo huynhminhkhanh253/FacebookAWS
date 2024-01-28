@@ -7,7 +7,7 @@ pipeline {
                 dir("Frontend") {     
                     bat label: 'My batch script',
                     script: ''' @echo off
-                            IF %ERRORLEVEL% EQU 1 (exit /B 0) ELSE (exit /B 1)'''
+                            IF %ERRORLEVEL% EQU 1 (exit /B 0)'''
                     bat 'npm run build'
                 }
             }
