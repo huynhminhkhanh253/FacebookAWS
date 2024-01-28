@@ -3,9 +3,9 @@ pipeline {
     stages {
         stage('Frontend build') {
             steps {
-                bat 'IF %ERRORLEVEL% EQU 1 (exit /B 0) ELSE (exit /B 1)'''
                 echo 'building reactjs'
                 dir("Frontend") {
+                    bat 'VERIFY > nul'
                     bat 'npm run build'
                 }
             }
