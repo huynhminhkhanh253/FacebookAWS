@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage('Frontend build') {
             environment {
-                PATH = "C:/Program Files/Git/bin"
+                PATH = "C:/Program Files/Git/bin/"
+            }
+            tools {
+                nodejs 'node_9_5_0'
             }
             steps {
                 echo 'building reactjs'
