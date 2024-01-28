@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Frontend build') {
             environment {
-                PATH = "C:/Users/Admin/Desktop/Project/FacebookClone/Frontend"
+                PATH = "C:/Program Files/Git/bin"
             }
             steps {
                 echo 'building reactjs'
