@@ -7,8 +7,7 @@ pipeline {
                 dir("Frontend") {     
                     bat label: 'My batch script',
                     script: ''' 
-                            IF %ERRORLEVEL% EQU 1 (exit /B 0) ELSE (exit /B 0)
-                            npm run build
+                            IF npm run build %ERRORLEVEL% EQU 1 (exit /B 0) ELSE (exit /B 0)
                             '''
                     
                 }
