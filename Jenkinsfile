@@ -5,7 +5,7 @@ pipeline {
         }
     }
     environment {
-        PATH = "C:\Program Files\Git\bin"
+        PATH = "C:/Program Files/Git/bin"
     }
     stages {
         stage('Frontend build') {
