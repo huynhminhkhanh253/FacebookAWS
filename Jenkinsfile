@@ -20,7 +20,7 @@ pipeline {
                 maven 'maven_3_9_1'
             }
             steps {
-                set -x
+                sh 'set -x'
                 echo 'building springboot'
                 sh 'cd Backend'
                 sh 'cd facebook-api'
