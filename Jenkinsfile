@@ -5,7 +5,8 @@ pipeline {
             steps {
                 echo 'building reactjs'
                 dir("Frontend") {
-                    bat 'npm run build'
+                    sh 'set -x'
+                    sh 'npm run build'
                 }
             }
         }
