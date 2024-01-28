@@ -9,7 +9,7 @@ pipeline {
                 echo 'building reactjs'
                 dir("Frontend") {
                     sh 'set -x'
-                    sh 'npm run build'
+                    bat 'npm run build'
                 }
             }
         }
