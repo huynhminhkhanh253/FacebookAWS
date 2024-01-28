@@ -5,8 +5,7 @@ pipeline {
             steps {
                 echo 'building reactjs'
                 dir("Frontend") {   
-                    bat 'npm --version'
-                    bat 'npm i @mui/styles'  
+                    bat 'npm --version' 
                     bat 'npm install'  
                 }
             }
