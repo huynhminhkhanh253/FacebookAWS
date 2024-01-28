@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Frontend build') {
             tools{
-                node 'node_9_5_0'
+                nodejs 'node_9_5_0'
             }
             steps {
                 echo 'building reactjs'
