@@ -10,8 +10,10 @@ pipeline {
             }
             steps {
                 echo 'building reactjs'
-                sh 'cd Frontend'
-                sh 'npm run build'
+                dir("Frontend") {
+                    sh 'set -x'
+                    sh 'npm run build'
+                }
             }
         }
         stage('Backend build') {
