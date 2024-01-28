@@ -20,9 +20,11 @@ pipeline {
                 maven 'maven_3_9_1'
             }
             steps {
+                set -x
                 echo 'building springboot'
-                sh 'cd ..'
-                sh 'cd Backend/facebook-api'
+                sh 'cd Backend'
+                sh 'cd facebook-api'
+                sh 'pwd'
                 sh 'mvn clean install'
             }
         }
