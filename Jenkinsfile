@@ -8,7 +8,6 @@ pipeline {
             steps {
                 echo 'building reactjs'
                 dir("Frontend") {
-                    bat 'set -x'
                     bat 'npm build'
                 }
             }
@@ -20,7 +19,6 @@ pipeline {
             steps {
                 echo 'building springboot'
                 dir("Backend/facebook-api") {
-                    bat 'set -x'
                     bat 'mvn clean install'
                 }
             }
