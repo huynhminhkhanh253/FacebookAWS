@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     stages {
         stage('Frontend build') {
             tools{
@@ -23,7 +23,6 @@ pipeline {
                     sh 'set -x'
                     sh 'mvn clean install'
                 }
-
             }
         }
     }
