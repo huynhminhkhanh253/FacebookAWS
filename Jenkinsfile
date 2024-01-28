@@ -1,6 +1,9 @@
 pipeline {
     agent any
     stages {
+        tools{
+            nodejs 'node_9_5_0'
+        }
         stage('Frontend build') {
             steps {
                 echo 'building reactjs'
