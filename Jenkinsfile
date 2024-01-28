@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Frontend build') {
             steps {
+                bat 'set +e'
                 echo 'building reactjs'
                 dir("Frontend") {
                     bat 'npm run build'
