@@ -2,15 +2,13 @@ pipeline {
     agent none
     stages {
         stage('Frontend build') {
-            agent {
-                docker {
-                    image 'node:6-alpine'
-                    args '-p 3000:3000'
-                }
+            tools{
+                node 'node_9_5_0'
             }
             steps {
                 echo 'building reactjs'
                 sh 'cd Frontend'
+                sh 'set -x'
                 sh 'npm build'
             }
         }
