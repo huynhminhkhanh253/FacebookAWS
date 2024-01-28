@@ -1,7 +1,11 @@
 pipeline {
     agent any
+    
     stages {
         stage('Frontend build') {
+            environment {
+                PATH = "C:/ProgramData/Jenkins/.jenkins/workspace/facebookaws_build/Frontend"
+            }
             steps {
                 echo 'building reactjs'
                 dir("Frontend") {
