@@ -6,8 +6,9 @@ pipeline {
                 echo 'building reactjs'
                 dir("Frontend") {     
                     bat label: 'My batch script',
-                    script: ''' 
-                            IF npm run build %ERRORLEVEL% EQU 1 (exit /B 0) ELSE (exit /B 0)
+                    script: '''
+                            npm run build
+                            IF %ERRORLEVEL% EQU 1 (exit /B 0) ELSE (exit /B 0)
                             '''
                     
                 }
