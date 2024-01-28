@@ -9,7 +9,8 @@ pipeline {
                 echo 'building reactjs'
                 dir("Frontend") {   
                     bat 'npm --version'  
-                    bat 'npm run build'                
+                    bat 'npm install'
+                    bat 'npm run build'  
                 }
             }
         }
