@@ -7,6 +7,7 @@ pipeline {
             }
             steps {
                 echo 'building reactjs'
+                cd Frontend
                 sh 'cd Frontend'
                 sh 'set -x'
                 sh 'npm build'
