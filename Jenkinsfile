@@ -2,11 +2,8 @@ pipeline {
     agent any
     stages {
         stage('Frontend build') {
-            environment {
-                PATH = "C:/Program Files/Git/bin/sh.exe"
-            }
             tools {
-                nodejs 'node_9_5_0'
+                nodejs 'node_9_7_0'
             }
             steps {
                 echo 'building reactjs'
