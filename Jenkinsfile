@@ -2,11 +2,11 @@ pipeline {
     agent any
     stages {
         stage('Frontend build') {
+            tools{
+                nodejs 'node_9_5_0'
+            }
             steps {
                 echo 'building reactjs'
-                tools{
-                    nodejs 'node_9_5_0'
-                }
                 dir("Frontend") {     
                     bat 'npm install'                
                 }
