@@ -5,9 +5,7 @@ pipeline {
             steps {
                 echo 'building reactjs'
                 bat label: 'My batch script',
-                script: ''' @echo off
-                            bat 'return_1_if_success.exe'   // command which returns 1 in case of success, 0 otherwise
-                            bat 'IF %ERRORLEVEL% EQU 1 (exit /B 0) ELSE (exit /B 1)'''
+                sh 'set -e'
                 dir("Frontend") {
                     bat 'npm run build'
                 }
