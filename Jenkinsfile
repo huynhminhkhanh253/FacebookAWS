@@ -1,5 +1,12 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            args '-p 3000:3000'
+        }
+    }
+    environment {
+        PATH = "C:\Program Files\Git\bin"
+    }
     stages {
         stage('Frontend build') {
             steps {
