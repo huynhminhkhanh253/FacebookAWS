@@ -11,9 +11,8 @@ pipeline {
             steps {
                 echo 'building reactjs'
                 sh 'cd Frontend'
-                sh 'npm --version' 
+                sh 'pwd' 
                 sh 'npm install'  
-                
             }
         }
         stage('Backend build') {
