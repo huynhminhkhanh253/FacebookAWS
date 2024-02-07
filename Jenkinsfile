@@ -1,10 +1,10 @@
 pipeline {
-    agent none
+    agent any
     stages {
         stage('Frontend build') {
             agent {
             docker {
-                image 'node:18-alpine'
+                image 'node:6-alpine'
                 args '-p 3000:3000'
                 }
             }
@@ -14,7 +14,7 @@ pipeline {
                 dir('Frontend') {
                     sh 'pwd'
                     
-                    sh 'npm run build'
+                    sh 'npm install'
                 }
             }
         }
