@@ -10,10 +10,10 @@ pipeline {
             }
             steps {
                 echo 'building reactjs'
-                dir("Frontend") {   
-                    sh 'npm --version' 
-                    sh 'npm install'  
-                }
+                sh 'cd Frontend'
+                sh 'npm --version' 
+                sh 'npm install'  
+                
             }
         }
         stage('Backend build') {
@@ -22,9 +22,9 @@ pipeline {
             }
             steps {
                 echo 'building springboot'
-                dir("Backend/facebook-api") {
-                    sh 'mvn clean install'
-                }
+                sh 'cd..'
+                sh 'cd Backend/facebook-api'
+                sh 'mvn clean install'
             }
         }
     }
