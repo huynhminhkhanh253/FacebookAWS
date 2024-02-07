@@ -14,7 +14,7 @@ pipeline {
                 dir('Frontend') {
                     sh 'pwd'
                     sh 'npm cache clean'
-                    sh 'sudo npm install'
+                    sh 'npm install nodemon --no-optional'
                 }
             }
         }
