@@ -11,7 +11,7 @@ class StatusBar extends Component {
     }
     getData=()=>{
         const thisContext=this;
-        fetch("http://localhost:8080/api/statusService/getAllStatus")
+        fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/statusService/getAllStatus")
         .then(response => response.json())
         .then(json => {
             thisContext.setState({data : json});

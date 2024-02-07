@@ -11,8 +11,8 @@ pipeline {
             steps {
                 echo 'building reactjs'
                 dir("Frontend") {   
-                    bat 'npm --version' 
-                    bat 'npm install'  
+                    sh 'npm --version' 
+                    sh 'npm install'  
                 }
             }
         }
@@ -23,7 +23,7 @@ pipeline {
             steps {
                 echo 'building springboot'
                 dir("Backend/facebook-api") {
-                    bat 'mvn clean install'
+                    sh 'mvn clean install'
                 }
             }
         }

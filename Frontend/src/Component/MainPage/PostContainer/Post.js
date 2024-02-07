@@ -36,7 +36,7 @@ class Post extends Component {
     };
     getData=()=>{
         const thisContext = this;
-        fetch("http://localhost:8080/api/commentService/getAllComments/"+this.props.object.postID)
+        fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/commentService/getAllComments/"+this.props.object.postID)
         .then(response => response.json())
         .then(json => {
                         thisContext.setState({comments : json});
@@ -70,7 +70,7 @@ class Post extends Component {
                 body : JSON.stringify(payload),
             };
             
-            fetch("http://localhost:8080/api/commentService/save",requestOptions)
+            fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/commentService/save",requestOptions)
             .then(response => response.json())
             .then(data =>{
                 thisContext.getData();
@@ -98,7 +98,7 @@ class Post extends Component {
         const requestOptions = {
             method: "DELETE",
         }
-        fetch("http://localhost:8080/api/postService/delete/" + this.props.object.postID , requestOptions)
+        fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/postService/delete/" + this.props.object.postID , requestOptions)
         .then(respone => respone.json())
         .then(data => {  
                         thisContext.props.uploadPost();

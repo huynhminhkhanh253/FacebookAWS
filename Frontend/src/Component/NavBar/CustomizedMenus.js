@@ -118,7 +118,7 @@ export default function CustomizedMenus(props) {
                 body: JSON.stringify(payload),
             }
             
-            fetch("http://localhost:8080/api/userService/save", requestOptions)
+            fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/userService/save", requestOptions)
             .then(respone => respone.json())
             .then(data => {  
                 localStorage.setItem("user", JSON.stringify(data))
@@ -141,7 +141,7 @@ export default function CustomizedMenus(props) {
     const requestOptions = {
         method: "DELETE"
     }
-    fetch("http://localhost:8080/api/userService/delete/" + JSON.parse(localStorage.getItem("user")).userID , requestOptions)
+    fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/userService/delete/" + JSON.parse(localStorage.getItem("user")).userID , requestOptions)
     .then(respone => respone.json())
     .then(data => {  
         deleteUser(user).then(() => {
@@ -168,7 +168,7 @@ const handleEdit=()=>{
         body : JSON.stringify(payload),
     };
 
-    fetch("http://localhost:8080/api/userService/save",requestOptions)
+    fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/userService/save",requestOptions)
     .then(response => response.json())
     .then(data =>{
         closedialog();

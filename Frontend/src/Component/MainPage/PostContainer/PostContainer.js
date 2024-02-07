@@ -14,7 +14,7 @@ class PostContainer extends Component {
         data: []
     }
     getData=()=>{
-        fetch("http://localhost:8080/api/postService/getPost")
+        fetch("http://facebookaws-1465022890.ap-southeast-1.elb.amazonaws.com/api/postService/getPost")
             .then(respone => respone.json())
             .then(json => {
                 this.setState({data : json});
