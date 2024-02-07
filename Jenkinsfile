@@ -13,7 +13,7 @@ pipeline {
                 sh 'pwd'
                 dir('Frontend') {
                     sh "pwd"
-                    sh 'npm install'
+                    sh 'sudo npm install'
                 }
             }
         }
@@ -23,9 +23,11 @@ pipeline {
             }
             steps {
                 echo 'building springboot'
-                sh 'cd..'
-                sh 'cd Backend/facebook-api'
-                sh 'mvn clean install'
+                sh 'pwd'
+                dir('Frontend') {
+                    sh "pwd"
+                    sh 'sudo mvn clean install'
+                }
             }
         }
     }
