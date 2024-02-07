@@ -12,8 +12,9 @@ pipeline {
                 echo 'building reactjs'
                 sh 'pwd'
                 dir('Frontend') {
-                    sh "pwd"
-                    sh 'sudo npm install'
+                    sh 'pwd'
+                    sh 'npm cache clean'
+                    sh 'npm install'
                 }
             }
         }
@@ -25,7 +26,7 @@ pipeline {
                 echo 'building springboot'
                 sh 'pwd'
                 dir('Frontend') {
-                    sh "pwd"
+                    sh 'pwd'
                     sh 'sudo mvn clean install'
                 }
             }
