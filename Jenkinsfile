@@ -4,7 +4,7 @@ pipeline {
         stage('Frontend build') {
             agent {
             docker {
-                image 'node:6-alpine'
+                image 'node:18-alpine'
                 args '-p 3000:3000'
                 }
             }
