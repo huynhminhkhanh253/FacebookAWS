@@ -14,7 +14,7 @@ pipeline {
                 dir('Frontend') {
                     sh 'pwd'
                     sh 'npm cache clean'
-                    sh 'npm install'
+                    sh 'sudo npm install'
                 }
             }
         }
