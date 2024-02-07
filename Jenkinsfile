@@ -13,7 +13,7 @@ pipeline {
                 sh 'pwd'
                 dir('Frontend') {
                     sh 'pwd'
-                    sh 'npm cache clean'
+                    
                     sh 'npm run build'
                 }
             }
