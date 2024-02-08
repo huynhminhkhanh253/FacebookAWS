@@ -10,6 +10,7 @@ pipeline {
             steps {
                 echo 'building reactjs'
                 dir('Frontend'){
+                   sh 'chown -R 992:992 "/.npm"'
                    sh 'npm install'
                 }
                 
