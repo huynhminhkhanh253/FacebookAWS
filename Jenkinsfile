@@ -9,7 +9,6 @@ pipeline {
         stage('Build') {
             steps {
                 dir('Frontend'){
-                    sh 'pwd'
                     sh 'npm install'
                 }               
             }
