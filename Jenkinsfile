@@ -5,32 +5,14 @@ pipeline {
             args '-p 3000:3000'
         }
     }
+    environment {
+        CI = 'true'
+    }
     stages {
         stage('Build') {
             steps {
-                echo 'building reactjs'
-                dir('Frontend'){
-                   sh 'npm install'
-                }
-                
-            }
-        }
-        stage('Backend build') {
-            tools{
-                maven 'maven_3_9_1'
-            }
-            steps {
-                echo 'building springboot'
-                sh 'pwd'
-                dir('Backend/facebook-api') {
-                    sh 'pwd'
-                    sh 'sudo mvn clean install'
-                }
+                sh 'npm install'
             }
         }
     }
 }
-
-
-
-
