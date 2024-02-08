@@ -5,15 +5,13 @@ pipeline {
             args '-p 3000:3000'
         }
     }
-    environment {
-        CI = 'true'
-    }
     stages {
         stage('Build') {
             steps {
-                sh 'cd Frontend'
-                sh 'pwd'
-                sh 'npm install'
+                dir('Frontend'){
+                    sh 'pwd'
+                    sh 'npm install'
+                }               
             }
         }
     }
