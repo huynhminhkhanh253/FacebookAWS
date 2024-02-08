@@ -12,6 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'cd Frontend'
+                sh 'pwd'
                 sh 'npm install'
             }
         }
