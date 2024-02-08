@@ -5,6 +5,7 @@ pipeline {
             steps {
                 echo 'building reactjs'
                 dir("Frontend") {   
+                    bat 'npm cache clean --force'
                     bat 'npm install'  
                 }
             }
