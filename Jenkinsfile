@@ -1,21 +1,18 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:18-alpine'
+            args '-p 3000:3000'
+        }
+    }
     stages {
-        stage('Frontend build') {
-            agent {
-            docker {
-                image 'node:6-alpine'
-                args '-p 3000:3000'
-                }
-            }
+        stage('Build') {
             steps {
                 echo 'building reactjs'
-                sh 'pwd'
-                dir('Frontend') {
-                    sh 'pwd'
-                    
-                    sh 'npm install'
+                dir('Frontend'){
+                   sh 'npm install'
                 }
+                
             }
         }
         stage('Backend build') {
@@ -25,7 +22,7 @@ pipeline {
             steps {
                 echo 'building springboot'
                 sh 'pwd'
-                dir('Frontend') {
+                dir('Backend/facebook-api') {
                     sh 'pwd'
                     sh 'sudo mvn clean install'
                 }
@@ -33,3 +30,7 @@ pipeline {
         }
     }
 }
+
+
+
+
