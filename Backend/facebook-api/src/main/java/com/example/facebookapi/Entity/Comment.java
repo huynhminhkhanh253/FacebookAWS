@@ -8,71 +8,90 @@ import org.springframework.data.cassandra.core.mapping.Table;
 
 @Table("comment")
 public class Comment {
-    
-    @PrimaryKey
-    private UUID commentID;
+	
+	@PrimaryKey
+	private UUID commentID;
+	
+	private UUID postID;
+	private String userID;
+	
+	private String userImage;
+	private String userName;
+	
+	public String getUserImage() {
+		return userImage;
+	}
 
-    private String userID;
-    private UUID postID;
+	public void setUserImage(String userImage) {
+		this.userImage = userImage;
+	}
 
-    private String comment;
-    private Timestamp timestamp;
+	public String getUserName() {
+		return userName;
+	}
 
-    public Comment(){
-        super();
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public Comment(UUID commentID, String userID, UUID postID, String comment, Timestamp timestamp) {
-        super();
-        this.commentID = commentID;
-        this.userID = userID;
-        this.postID = postID;
-        this.comment = comment;
-        this.timestamp = timestamp;
-    }
+	private String comment;
+	private Timestamp timestamp;
+	
+	public Comment() {
+		super();
+	}
 
-    public UUID getCommentID() {
-        return commentID;
-    }
+	public Comment(UUID commentID, UUID postID, String userID, String userImage, String userName, String comment,
+			Timestamp timestamp) {
+		super();
+		this.commentID = commentID;
+		this.postID = postID;
+		this.userID = userID;
+		this.userImage = userImage;
+		this.userName = userName;
+		this.comment = comment;
+		this.timestamp = timestamp;
+	}
 
-    public void setCommentID(UUID commentID) {
-        this.commentID = commentID;
-    }
+	public UUID getCommentID() {
+		return commentID;
+	}
 
-    public String getUserID() {
-        return userID;
-    }
+	public void setCommentID(UUID commentID) {
+		this.commentID = commentID;
+	}
 
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
+	public UUID getPostID() {
+		return postID;
+	}
 
-    public UUID getPostID() {
-        return postID;
-    }
+	public void setPostID(UUID postID) {
+		this.postID = postID;
+	}
 
-    public void setPostID(UUID postID) {
-        this.postID = postID;
-    }
+	public String getUserID() {
+		return userID;
+	}
 
-    public String getComment() {
-        return comment;
-    }
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
+	public String getComment() {
+		return comment;
+	}
 
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
+	public Timestamp getTimestamp() {
+		return timestamp;
+	}
 
-    
+	public void setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
+	}
 
-    
-
+	
 }
